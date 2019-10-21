@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Logar
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    
+        <ion-list inset>
+            <ion-item>
+                <ion-label floating><ion-icon name="contact" placeholder="Usuário"></ion-icon></ion-label>
+                <ion-input type="text" [(ngModel)]="email"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                <ion-label floating><ion-icon name="lock" placeholder="Senha"></ion-icon></ion-label>
+                <ion-input type="password" [(ngModel)]="senha"></ion-input>
+            </ion-item>  
+
+            <br>
+            <br>
+
+            <ion-button expand="full" color="warning" block (click)="logar()">Logar</ion-button>
+            <ion-button expand="full" color="medium" block>Registrar</ion-button>
+            <ion-button expand="full" color="medium" block>Recuperar Senha</ion-button>
+            <ion-button expand="full" block small>Logar Com Facebook</ion-button>
+            <ion-button expand="full" color="danger" block>Logar Com Google</ion-button>
+            <ion-button expand="full" color="secondary" block>Logar Com Twitter</ion-button>
+        </ion-list>
+    
+</ion-content>

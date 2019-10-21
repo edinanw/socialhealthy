@@ -5,22 +5,44 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomePage } from './home/home.page';
+import { PerfilPage } from './perfil/perfil.page';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { Modal } from './modal/modal';
+import { ModulosPageModule } from './modulos/modulos.module';
+import { ModulosPage } from './modulos/modulos.page';
+import { Modulo1Page } from './modulo1/modulo1.page';
+import { Modulo2Page } from './modulo2/modulo2.page';
+import { Modulo3Page } from './modulo3/modulo3.page';
+
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,HomePage,ModulosPage,PerfilPage,LoginComponent,Modulo1Page,Modulo2Page,Modulo3Page],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,  
+    HttpClientModule
   ],
   providers: [
     StatusBar,
+    Modal,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

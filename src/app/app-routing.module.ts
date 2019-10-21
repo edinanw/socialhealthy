@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { HomePage } from './home/home.page';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
+import { PerfilPage } from './perfil/perfil.page';
+import { ModulosPage } from './modulos/modulos.page';
+import { Modulo1Page } from './modulo1/modulo1.page';
+import { Modulo2Page } from './modulo2/modulo2.page';
+import { Modulo3Page } from './modulo3/modulo3.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+  {path: '', redirectTo: 'home', pathMatch:'full',canActivate: [AuthGuard]},
+  {path: 'home', component: HomePage, canActivate: [AuthGuard]},
+  {path: 'perfil', component: PerfilPage, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'modulos', component:ModulosPage},
+  {path: 'modulo1', component:Modulo1Page },
+  {path: 'modulo2', component:Modulo2Page },
+  {path: 'modulo3', component:Modulo3Page }
+    
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes )],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

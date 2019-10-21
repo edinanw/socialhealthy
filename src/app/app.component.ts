@@ -12,14 +12,34 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
+      title: 'Início',
+      url: '/',
       icon: 'home'
     },
     {
-      title: 'List',
+      title: 'Perfil',
+      url: '/perfil',
+      icon: 'person'
+    },
+    {
+      title: 'Conversas',
+      url: '/conversas',
+      icon: 'chatboxes'
+    },
+    {
+      title: 'Privacidade e Termos',
+      url: '/privacidade',
+      icon: 'ios-contacts'
+    },
+    {
+      title: 'Configurações',
+      url: '/config',
+      icon: 'settings'
+    },
+    {
+      title: 'Sair',
       url: '/list',
-      icon: 'list'
+      icon: 'log-out'
     }
   ];
 
@@ -37,4 +57,5 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+  
 }
