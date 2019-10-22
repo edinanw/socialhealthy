@@ -1,10 +1,10 @@
 <ion-content>
   <ion-grid>
-    <ion-row *ngIf="perfil==1;else semPerfil">
+    <ion-row *ngIf="perfil==1||perfil==2;else semPerfil">
+      
       <!---->
-      <ion-col size="5" *ngFor="let item of modulosPerfil1" class="modulo-item">
-        <div  (click)="abrirModulo(item.link)">
-
+      <ion-col size="5" *ngFor="let item of modulos()" class="modulo-item">
+        <div (click)="abrirModulo(item.link)">
           <div *ngIf="item.img!=''; else semImg">
             <div class="modulo-img">
               {{item.img}}
@@ -15,15 +15,17 @@
             <ion-icon name="{{item.icon}}"></ion-icon>
           </div>
         </ng-template>
-        <div>
+        <br>
+        <div class="modulo-title">
           {{item.nome}}
         </div>
       </div>
       </ion-col>
       <!---->
     </ion-row>
+   
     <ng-template #semPerfil>
-      oush
+      
     </ng-template>
   </ion-grid>
 </ion-content>

@@ -14,10 +14,12 @@ const routes: Routes = [
   {path: 'home', component: HomePage, canActivate: [AuthGuard]},
   {path: 'perfil', component: PerfilPage, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'logoff', component: LoginComponent},
   {path: 'modulos', component:ModulosPage},
   {path: 'modulo1', component:Modulo1Page },
   {path: 'modulo2', component:Modulo2Page },
-  {path: 'modulo3', component:Modulo3Page }
+  {path: 'modulo3', component:Modulo3Page },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
     
 ];
 

@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
 })
 export class HomePage {
   public acesso;
+  
   constructor(private auth: AuthService) {
     this.acesso=auth.getPerfil();
   }

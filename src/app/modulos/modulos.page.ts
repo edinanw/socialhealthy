@@ -16,14 +16,16 @@ export class ModulosPage implements OnInit {
     {'id':3,'nome':'Modulo 3','img':'','icon':'analytics','link':'/modulo3'},
     {'id':4,'nome':'Modulo 4','img':'','icon':'american-football','link':'/modulo4'},
   ];
+
   public modulosPerfil2=[
-    {'id':1,'nome':'Modulo 1','img':'','icon':'','link':'/modulo1'},
-    {'id':2,'nome':'Modulo 2','img':'','icon':'','link':'/modulo2'},
-    {'id':3,'nome':'Modulo 3','img':'','icon':'','link':'/modulo3'},
-    {'id':4,'nome':'Modulo 4','img':'','icon':'','link':'/modulo4'},
-    {'id':5,'nome':'Modulo 5','img':'','icon':'','link':'/modulo5'},
-    {'id':6,'nome':'Modulo 6','img':'','icon':'','link':'/modulo6'},
+    {'id':1,'nome':'Modulo 1','img':'','icon':'logo-android','link':'/modulo1'},
+    {'id':2,'nome':'Modulo 2','img':'','icon':'logo-apple','link':'/modulo2'},
+    {'id':3,'nome':'Modulo 3','img':'','icon':'md-at','link':'/modulo3'},
+    {'id':4,'nome':'Modulo 4','img':'','icon':'md-basketball','link':'/modulo4'},
+    {'id':5,'nome':'Modulo 5','img':'','icon':'md-beer','link':'/modulo5'},
+    {'id':6,'nome':'Modulo 6','img':'','icon':'md-bicycle','link':'/modulo6'},
   ];
+  
   constructor(private auth: AuthService, private router: Router) { 
     this.auth.getPerfil().finally(()=>{
       this.perfil=this.auth.perfil;
@@ -32,21 +34,17 @@ export class ModulosPage implements OnInit {
 
   ngOnInit() { }
 
-  getModulos(){
-    var a =this.perfil==1?this.modulosPerfil1:this.modulosPerfil2;
-    var b='aaaa';
-    var c='';
-    a.forEach(data => {
-      c=data.img==''?'<span class="modulo-img">'+data.img+'</span>':'<span class="modulo-icon">'+data.icon+'</span>'
-      b=b+'<ion-col> <div class="modulo-item" data-id="'+data.id+'" (click)="abrirModulo("'+data.link+'")">'+
-      c+
-      '<span class="modulo-titulo">'+data.nome+'</span>'
-      '</div></ion-col>';
-    });
-    return b; 
-  }
-
   abrirModulo(link){
       this.router.navigate([link]);
+  }
+
+  modulos(){
+    if(this.perfil==1){
+      return this.modulosPerfil1
+    }else if(this.perfil==2){
+      return this.modulosPerfil2;
+    }
+
+    return [];
   }
 }

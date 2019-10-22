@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,7 +14,7 @@ export class AuthService {
   private webservice;
   private key='kwk8o4ggo4cgssw84kwk8cg8o0sc0sc004o44wc4';
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private menuCtrl: MenuController) { 
     //this.webservice="http://localhost/rest/public/api/";
     this.webservice="https://socialhealthy.000webhostapp.com/api";
   }
@@ -29,8 +30,10 @@ export class AuthService {
   public isAuth() {
     const a = this.getToken();
     if (a !== '' && a != null && a !== undefined) {
+      
       return true;
     }
+    
     return false;
   }
  
@@ -62,6 +65,7 @@ export class AuthService {
           this.resp = data;
           if (this.resp.body.status) {
             this.setToken(this.resp.body.status);
+            this.menuCtrl.enable(true,'menu-sidebar');
             this.router.navigate(['']);
           } else {
             alert('Token Não Gerado!');
@@ -106,4 +110,8 @@ export class AuthService {
    // return this.perfil;
   }
   
+  logoff(){
+    this.menuCtrl.enable(false,'menu-sidebar');
+    sessionStorage.removeItem('currentUser');
+  }
 }

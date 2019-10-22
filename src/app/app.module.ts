@@ -1,3 +1,4 @@
+import { MenuPage } from './menu/menu.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -15,16 +16,13 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { Modal } from './modal/modal';
-import { ModulosPageModule } from './modulos/modulos.module';
 import { ModulosPage } from './modulos/modulos.page';
 import { Modulo1Page } from './modulo1/modulo1.page';
 import { Modulo2Page } from './modulo2/modulo2.page';
 import { Modulo3Page } from './modulo3/modulo3.page';
 
-
-
 @NgModule({
-  declarations: [AppComponent,HomePage,ModulosPage,PerfilPage,LoginComponent,Modulo1Page,Modulo2Page,Modulo3Page],
+  declarations: [AppComponent,HomePage,ModulosPage,PerfilPage,LoginComponent,Modulo1Page,Modulo2Page,Modulo3Page,MenuPage],
   entryComponents: [],
   imports: [
     BrowserModule,

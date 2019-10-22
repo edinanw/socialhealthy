@@ -1,0 +1,36 @@
+<ion-menu side="start" menuId="menu-sidebar" class="menu-sidebar">
+  <ion-header>
+    <ion-toolbar color="warning">
+        <ion-item class="bar-profile" [routerLink]="['/perfil']">
+          
+          <ion-row class="profile ">
+            <ion-col size="4">
+              <img class="profile-picture" src="../../assets/images/profile.jpg"/>
+            </ion-col>
+            <ion-col size="8" class="name">
+              <ion-row>
+                <ion-col size="12">
+                  <h3 >Xablau</h3> 
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                    <small>xablau@xablei.com</small> 
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+    </ion-toolbar>      
+  </ion-header>  
+  <ion-content>
+    <ion-list >
+      <ion-item  *ngFor="let item of appPages" [routerLink]='item.url'>
+        <ion-icon name="{{item.icon}}" slot="start"></ion-icon>
+        {{item.title}}
+      </ion-item>  
+    </ion-list>  
+  </ion-content>  
+  <ion-router-outlet main></ion-router-outlet>
+</ion-menu>
