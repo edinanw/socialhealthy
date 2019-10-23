@@ -58,7 +58,7 @@ export class AuthService {
           if (err.status === 401) {
             alert("Usuário ou senha inválida!");
             return throwError(err.statusText);
-          } else {
+          } else { 
             alert("Erro ao efetuar a operação");
             console.log(err);
             console.log(caught);

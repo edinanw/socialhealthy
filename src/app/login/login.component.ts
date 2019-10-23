@@ -8,26 +8,29 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService, private route: Router , private menuCtrl: MenuController) { }
   
   private email = '';
+
   private senha = '';
 
   ngOnInit() {
+
     if(this.auth.isAuth()){
         this.route.navigateByUrl('');
     }
 
-   if(this.route.url=='/logoff'){
-     this.deslogar();
-     return;
+    if(this.route.url=='/logoff'){
+      this.deslogar();
+      return;
     }
     
-   if(this.route.url=='/login'){
-    this.menuCtrl.enable(false);  
-   }
+    if(this.route.url=='/login'){
+      this.menuCtrl.enable(false);  
+    }
    
   }
 
@@ -39,5 +42,5 @@ export class LoginComponent implements OnInit {
     this.auth.logoff();
     this.route.navigateByUrl('');
   }
-  
+   
 }

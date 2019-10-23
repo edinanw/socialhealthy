@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingService } from './loading.service';
-import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'app-loading',
@@ -8,13 +7,5 @@ import { Subject } from 'rxjs';
   styleUrls: ['./loading.component.css']
 })
 export class LoadingComponent {
-
-  loading: Subject<boolean> = this.loadService.loading;
-
-  constructor(private loadService: LoadingService) {}
-
-  load() {
-    this.loading = this.loadService.loading;
-  }
-
+  constructor() {}
 }
