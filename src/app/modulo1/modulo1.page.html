@@ -8,6 +8,10 @@
 </ion-header> 
 <app-menu></app-menu>
 <ion-content>
+  <ion-button (click)="ler()">Ler Câmera</ion-button>
+  <ion-item *ngIf="texto!=''">
+    Texto lido: {{texto}}
+  </ion-item>
   <ion-fab vertical="bottom" horizontal="end"  slot="fixed">
     <ion-fab-button (click)="navc.back()">
       <ion-icon name="arrow-back"></ion-icon>

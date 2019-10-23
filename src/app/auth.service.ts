@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
@@ -16,7 +15,6 @@ export class AuthService {
   private key='kwk8o4ggo4cgssw84kwk8cg8o0sc0sc004o44wc4';
 
   constructor(private http: HttpClient, private router: Router, private menuCtrl: MenuController, private loader: LoadingService) { 
-    //this.webservice="http://localhost/rest/public/api/";
     this.webservice="https://socialhealthy.000webhostapp.com/api";
   }
 
