@@ -1,3 +1,4 @@
+import { LoadingService } from './../../../loginapi/src/app/loading/loading.service';
 import { MenuController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -14,7 +15,7 @@ export class AuthService {
   private webservice;
   private key='kwk8o4ggo4cgssw84kwk8cg8o0sc0sc004o44wc4';
 
-  constructor(private http: HttpClient, private router: Router, private menuCtrl: MenuController) { 
+  constructor(private http: HttpClient, private router: Router, private menuCtrl: MenuController, private loader: LoadingService) { 
     //this.webservice="http://localhost/rest/public/api/";
     this.webservice="https://socialhealthy.000webhostapp.com/api";
   }
@@ -38,6 +39,8 @@ export class AuthService {
   }
  
   public authUser(email: string, password: string): Observable<any> {
+    this.loader.show();
+                    
     const dados = {
       'email': email,
       'password': password, 
@@ -51,6 +54,7 @@ export class AuthService {
     this.http.post(this.webservice + '/login', dados, { observe: 'response', headers: headers})
       .pipe(
         catchError((err, caught) => {
+          this.loader.hide();
           if (err.status === 401) {
             alert("Usuário ou senha inválida!");
             return throwError(err.statusText);
@@ -63,12 +67,14 @@ export class AuthService {
         }),
         map(data => {
           this.resp = data;
-          if (this.resp.body.status) {
-            this.setToken(this.resp.body.status);
+          if(this.resp.body.status) {
+            this.setToken(this.resp.body.status); 
             this.menuCtrl.enable(true,'menu-sidebar');
             this.router.navigate(['']);
-          } else {
+            this.loader.hide();
+          }else{
             alert('Token Não Gerado!');
+            this.loader.hide();
             console.log(data.body);
           }
         })
@@ -111,7 +117,7 @@ export class AuthService {
   }
   
   logoff(){
-    this.menuCtrl.enable(false,'menu-sidebar');
+    //this.menuCtrl.enable(false,'menu-sidebar');
     sessionStorage.removeItem('currentUser');
   }
 }

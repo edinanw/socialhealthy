@@ -11,7 +11,6 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    
     RouterModule.forChild([
       {
         path: '',
@@ -19,6 +18,8 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  entryComponents:[]
 })
+
 export class HomePageModule {}

@@ -1,3 +1,4 @@
+import { LoadingController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -6,16 +7,19 @@ import { Subject } from 'rxjs';
 })
 export class LoadingService {
 
-  loading = new Subject<boolean>();
-
-  constructor() { }
+  //loading = new Subject<boolean>();
+  private loader;
+  constructor(private load: LoadingController) { }
 
   show() {
-    this.loading.next(true);
+    this.loader=this.load;
+    this.loader.create({}).then(a=>{a.present()});
+    //this.loading.next(true);
   }
-
+  
   hide() {
-     this.loading.next(false);
+    this.loader.dismiss();
+     //this.loading.next(false);
   }
 
 }

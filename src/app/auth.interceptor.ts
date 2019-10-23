@@ -38,12 +38,12 @@ export class AuthInterceptor implements HttpInterceptor {
             (data) => {
                 if (data.type === HttpEventType.Sent) {
                     console.log('iniciou');
-                    this.loader.show();
+                    
                 }
 
                 if (data.type === HttpEventType.Response) {
                     console.log('respondeu');
-                    this.loader.hide();
+                   
                 }
 
                 return data;

@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'modulo1', component:Modulo1Page },
   {path: 'modulo2', component:Modulo2Page },
   {path: 'modulo3', component:Modulo3Page },
-  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
+  {path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
     
 ];
 

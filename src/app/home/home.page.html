@@ -5,8 +5,16 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <app-modulos></app-modulos>  
-</ion-content>
 
 <app-menu></app-menu>
+
+<ion-content>
+  <ion-nav [root]="root" ></ion-nav>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title><small>Social Healthy&copy; {{ano}}</small> </ion-title>
+  </ion-toolbar>
+</ion-footer>

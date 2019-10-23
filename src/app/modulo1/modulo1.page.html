@@ -1,12 +1,16 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-title>modulo1</ion-title>
+    <ion-title>Modulo 1</ion-title>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> 
+<app-menu></app-menu>
 <ion-content>
-
+  <ion-fab vertical="bottom" horizontal="end"  slot="fixed">
+    <ion-fab-button (click)="navc.back()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
