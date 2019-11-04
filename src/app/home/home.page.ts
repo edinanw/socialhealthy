@@ -24,7 +24,7 @@ export class HomePage {
   }
 
   ionViewCanLeave(){
-   this.platform.backButton.subscribeWithPriority(9999,()=>{
+   this.platform.backButton.subscribeWithPriority(9999,async ()=>{
     document.addEventListener('backbutton', function (event) {
       event.preventDefault();
       event.stopPropagation();

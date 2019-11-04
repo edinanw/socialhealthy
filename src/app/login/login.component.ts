@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     if(this.auth.isAuth()){
-        this.route.navigateByUrl('');
+        this.route.navigateByUrl(''); 
     }
 
     if(this.route.url=='/logoff'){
@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
 
   logar() {
     this.auth.authUser(this.email, this.senha);
+  }
+
+  logarAdm() {
+    this.auth.authUser('admin', 'admin123');
   }
 
   deslogar(){

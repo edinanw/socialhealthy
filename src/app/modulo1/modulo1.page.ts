@@ -1,6 +1,7 @@
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
 
 @Component({
   selector: 'app-modulo1',
@@ -11,22 +12,32 @@ export class Modulo1Page implements OnInit {
   private texto="";
   constructor(private navc:NavController,private qr: QRScanner) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ler(){
-    this.qr.prepare().then((status: QRScannerStatus)=>{
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    ////////////////////ABRIR MODAL//////////////////////////
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+    this.qr.prepare().then((status: QRScannerStatus) => {
       if(status.authorized){
         let scanSub = this.qr.scan().subscribe((text: string) => {
-          this.qr.hide(); // hide camera preview
-          this.texto=text;
-          scanSub.unsubscribe(); // stop scanning
+          console.log('Scanned something', text);
+          this.closeScanner();
+          scanSub.unsubscribe();
         });
-      } else if (status.denied) {
-        alert("Você não tem permissão para acesar a câmera, acessar as configurações do dispositivo para alterar as permissões");
+        this.qr.show();
+      }else if(status.denied) {
+        alert('denied');
       }else{
-        alert("Você não tem permissão para acesar a câmera");
+        alert('deu erro');
       }
-    });
+    }).catch((e: any) => alert('Error is'));
+  }
+  closeScanner() {
+   
+    this.qr.hide();
+    this.qr.destroy();
   }
 }

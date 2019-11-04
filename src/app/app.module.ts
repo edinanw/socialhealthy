@@ -20,6 +20,7 @@ import { Modal } from './modal/modal';
 import { ModulosPage } from './modulos/modulos.page';
 import { Modulo2Page } from './modulo2/modulo2.page';
 import { Modulo3Page } from './modulo3/modulo3.page';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
   declarations: [AppComponent,HomePage,ModulosPage,PerfilPage,LoginComponent,MenuPage,Modulo1Page,Modulo2Page,Modulo3Page],
@@ -34,6 +35,7 @@ import { Modulo3Page } from './modulo3/modulo3.page';
   providers: [
     StatusBar,
     Modal,
+    QRScanner,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
